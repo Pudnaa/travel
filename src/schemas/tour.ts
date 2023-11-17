@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'Tour',
@@ -46,8 +46,18 @@ export default defineType({
     }),
     defineField({
       name: 'meta',
-      title: 'meta',
-      type: 'text',
+      type: 'array',
+      title: 'Tags for meta',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'meta',
+          fields: [
+            { type: 'string', name: 'label' },
+            { type: 'string', name: 'value' },
+          ],
+        }),
+      ],
     }),
   ],
   preview: {
