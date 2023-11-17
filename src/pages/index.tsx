@@ -1,6 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useLiveQuery } from 'next-sanity/preview'
-
 import Card from '~/components/Card'
 import Container from '~/components/Container'
 import Welcome from '~/components/Welcome'
@@ -9,6 +8,16 @@ import { getClient } from '~/lib/sanity.client'
 import { getPosts, type Post, postsQuery } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 
+import MainSlider from '@/components/MainSlider/MainSlider'
+import TourSearch from '@/components/TourSearch/TourSearch'
+import BrandOne from '@/components/BrandOne/BrandOne'
+import DestinationsOne from '@/components/DestinationsOne/DestinationsOne'
+import GalleryOne from '@/components/GalleryOne/GalleryOne'
+import NewsOne from '@/components/NewsOne/NewsOne'
+import PopularTours from '@/components/PopularTours/PopularTours'
+import TestimonialOne from '@/components/TestimonialOne/TestimonialOne'
+import VideoOne from '@/components/VideoOne/VideoOne'
+import WhyChoose from '@/components/WhyChoose/WhyChoose'
 export const getStaticProps: GetStaticProps<
   SharedPageProps & {
     posts: Post[]
@@ -32,13 +41,16 @@ export default function IndexPage(
   const [posts] = useLiveQuery<Post[]>(props.posts, postsQuery)
   return (
     <Container>
-      <section>
-        {posts.length ? (
-          posts.map((post) => <Card key={post._id} post={post} />)
-        ) : (
-          <Welcome />
-        )}
-      </section>
+      <MainSlider />
+      <TourSearch />
+      <DestinationsOne />
+      <PopularTours />
+      <VideoOne />
+      <BrandOne />
+      <TestimonialOne />
+      <GalleryOne />
+      <WhyChoose />
+      <NewsOne data={posts} />
     </Container>
   )
 }

@@ -1,8 +1,22 @@
-import '~/styles/global.css'
-
+// import '~/styles/global.css'
 import type { AppProps } from 'next/app'
 import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 import { lazy } from 'react'
+import ContextProvider from '@/context/ContextProvider'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'node_modules/swiper/swiper-bundle.min.css'
+import 'tiny-slider/dist/tiny-slider.css'
+import '@/vendors/animate/animate.min.css'
+import '@/vendors/animate/custom-animate.css'
+import '@/vendors/fontawesome/css/all.min.css'
+import '@/vendors/tevily-icons/style.css'
+import '@/vendors/reey-font/stylesheet.css'
+import 'react-datepicker/dist/react-datepicker.css'
+import 'react-rangeslider/lib/index.css'
+
+import '@/styles/globals.css'
+import '@/styles/tevily.css'
+import '@/styles/tevily-responsive.css'
 
 export interface SharedPageProps {
   draftMode: boolean
@@ -46,13 +60,15 @@ export default function App({
           }
         `}
       </style>
-      {draftMode ? (
-        <PreviewProvider token={token}>
+      <ContextProvider>
+        {draftMode ? (
+          <PreviewProvider token={token}>
+            <Component {...pageProps} />
+          </PreviewProvider>
+        ) : (
           <Component {...pageProps} />
-        </PreviewProvider>
-      ) : (
-        <Component {...pageProps} />
-      )}
+        )}
+      </ContextProvider>
     </>
   )
 }
