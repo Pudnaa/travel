@@ -46,10 +46,10 @@ export default function IndexPage(
       <DestinationsOne />
       <PopularTours />
       <VideoOne />
-      <BrandOne />
-      <TestimonialOne />
+      {/* <BrandOne /> */}
+      {/* <TestimonialOne /> */}
       <GalleryOne />
-      <WhyChoose />
+      {/* <WhyChoose /> */}
       <NewsOne data={posts} />
     </Container>
   )

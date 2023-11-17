@@ -11,16 +11,8 @@ import SingleNewsOne from './SingleNewsOne'
 const { tagline, title, newsData } = newsOne
 
 const NewsOne = ({ data }) => {
-  console.log('data data :>> ', data)
   return (
     <section className="news-one">
-      {/* <section>
-        {data.length ? (
-          data.map((post) => <Card key={post._id} post={post} />)
-        ) : (
-          <>gggg</>
-        )}
-      </section> */}
       <Container>
         <div className="news-one__top">
           <Row>
@@ -45,7 +37,7 @@ const NewsOne = ({ data }) => {
           <Row>
             {data.map((post) => (
               <Col xl={4} lg={4} key={post.id} className="animated fadeInUp">
-                {/* <SingleNewsOne news={news} /> */}
+                {/* <SingleNewsOne key={post._id} news={post} /> */}
                 <Card key={post._id} post={post} />
               </Col>
             ))}

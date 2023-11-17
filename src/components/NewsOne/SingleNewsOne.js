@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 import { Image } from 'react-bootstrap'
+
 const SingleNewsOne = ({ news = {}, newsTwo = false }) => {
   const { image, title, author, comments, date } = news
 
@@ -14,7 +15,9 @@ const SingleNewsOne = ({ news = {}, newsTwo = false }) => {
       <div className="news-one__img">
         <Image src={require(`@/images/blog/${image}`).default.src} alt="" />
         <Link href="/news-details">
-          <span className="news-one__plus"></span>
+          <a>
+            <span className="news-one__plus"></span>
+          </a>
         </Link>
         <div className="news-one__date">
           <p>
@@ -31,14 +34,18 @@ const SingleNewsOne = ({ news = {}, newsTwo = false }) => {
         <ul className="list-unstyled news-one__meta">
           <li>
             <Link href="/news-details">
-              <i className="far fa-user-circle"></i>
-              {author}
+              <a>
+                <i className="far fa-user-circle"></i>
+                {author}
+              </a>
             </Link>
           </li>
           <li>
             <Link href="/news-details">
-              <i className="far fa-comments"></i>
-              {comments} Comments
+              <a>
+                <i className="far fa-comments"></i>
+                {comments} Comments
+              </a>
             </Link>
           </li>
         </ul>
